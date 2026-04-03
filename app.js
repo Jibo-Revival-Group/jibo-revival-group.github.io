@@ -20,13 +20,16 @@ const applyTheme = (theme) => {
 
 applyTheme(localStorage.getItem(themeKey) || "default");
 
-const progressValue = Math.max(0, Math.min(projectProgress.percentage || 0, 100));
-progressFill.style.width = `${progressValue}%`;
-progressLabel.textContent = `${progressValue}% complete`;
+if (progressFill && progressLabel && typeof projectProgress !== "undefined") {
+  const progressValue = Math.max(0, Math.min(projectProgress.percentage || 0, 100));
+  progressFill.style.width = `${progressValue}%`;
+  progressLabel.textContent = `${progressValue}% complete`;
+}
 
-commits.forEach((entry) => {
-  const card = document.createElement("article");
-  card.className = "timeline-card";
+if (commitList && typeof commits !== "undefined") {
+  commits.forEach((entry) => {
+    const card = document.createElement("article");
+    card.className = "timeline-card";
 
   const authorsText = (entry.authors || [])
     .map((id) => authors[id]?.name)
@@ -50,13 +53,15 @@ commits.forEach((entry) => {
     ${authorsText ? `<p class="timeline-card__authors">By ${authorsText}</p>` : ""}
   `;
 
-  commitList.appendChild(card);
-});
+    commitList.appendChild(card);
+  });
+}
 
-Object.values(authors).forEach((author) => {
-  const authorUrl = usableUrl(author.url);
-  const card = document.createElement(authorUrl ? "a" : "article");
-  card.className = "helper-card";
+if (helpersGrid && typeof authors !== "undefined") {
+  Object.values(authors).forEach((author) => {
+    const authorUrl = usableUrl(author.url);
+    const card = document.createElement(authorUrl ? "a" : "article");
+    card.className = "helper-card";
 
   if (authorUrl) {
     card.href = authorUrl;
@@ -74,8 +79,9 @@ Object.values(authors).forEach((author) => {
     <p>${author.role || "Community Supporter"}</p>
   `;
 
-  helpersGrid.appendChild(card);
-});
+    helpersGrid.appendChild(card);
+  });
+}
 
 const setMenuOpen = (open) => {
   if (!themeMenu || !themeToggle) return;
