@@ -10,7 +10,7 @@ const usableUrl = (value) => (value && !value.includes("example.com") ? value : 
 const themeKey = "jibo-revival-theme";
 
 const applyTheme = (theme) => {
-  if (theme === "default") {
+  if (theme !== "aero") {
     document.body.removeAttribute("data-theme");
   } else {
     document.body.dataset.theme = theme;
@@ -18,7 +18,7 @@ const applyTheme = (theme) => {
   localStorage.setItem(themeKey, theme);
 };
 
-applyTheme(localStorage.getItem(themeKey) || "default");
+applyTheme(localStorage.getItem(themeKey) === "aero" ? "aero" : "default");
 
 if (progressFill && progressLabel && typeof projectProgress !== "undefined") {
   const progressValue = Math.max(0, Math.min(projectProgress.percentage || 0, 100));

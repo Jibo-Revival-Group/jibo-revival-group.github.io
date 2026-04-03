@@ -48,21 +48,6 @@ body[data-theme="aero"] {
   --aero-sheen: linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(255, 255, 255, 0.1));
 }
 
-body[data-theme="dark"] {
-  --bg: #0b1220;
-  --bg-2: #111a2c;
-  --bg-3: #18253b;
-  --panel: rgba(17, 25, 39, 0.88);
-  --panel-strong: #0b1220;
-  --text: #edf4ff;
-  --muted: #a6bdd9;
-  --line: rgba(168, 197, 255, 0.14);
-  --accent: #62a0ff;
-  --accent-deep: #8bc0ff;
-  --accent-soft: rgba(98, 160, 255, 0.16);
-  --shadow: 0 20px 50px rgba(0, 0, 0, 0.34);
-}
-
 * { box-sizing: border-box; }
 
 html { scroll-behavior: smooth; }

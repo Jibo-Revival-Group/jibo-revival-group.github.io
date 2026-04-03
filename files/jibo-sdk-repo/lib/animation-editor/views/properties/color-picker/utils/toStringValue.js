@@ -1,0 +1,1 @@
+"use strict";var t=require("./color").toColor;module.exports=function(o){return o=t(Object.assign({},o)),1==o.toRgb().a?o.toHexString():o.toRgbString()};
