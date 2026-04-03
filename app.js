@@ -8,11 +8,15 @@ const usableUrl = (value) => (value && !value.includes("example.com") ? value : 
 const themeKey = "jibo-revival-theme";
 
 const applyTheme = (theme) => {
-  document.body.dataset.theme = theme;
+  if (theme === "default") {
+    document.body.removeAttribute("data-theme");
+  } else {
+    document.body.dataset.theme = theme;
+  }
   localStorage.setItem(themeKey, theme);
 };
 
-applyTheme(localStorage.getItem(themeKey) || "aero");
+applyTheme(localStorage.getItem(themeKey) || "default");
 
 const progressValue = Math.max(0, Math.min(projectProgress.percentage || 0, 100));
 progressFill.style.width = `${progressValue}%`;
@@ -75,6 +79,8 @@ const setMenuOpen = (open) => {
   themeMenu.hidden = !open;
   themeToggle.setAttribute("aria-expanded", String(open));
 };
+
+document.body.dataset.theme = document.body.dataset.theme || "default";
 
 themeToggle.addEventListener("click", () => {
   setMenuOpen(themeMenu.hidden);
