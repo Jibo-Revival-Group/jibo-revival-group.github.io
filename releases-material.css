@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
 :root {
+  /* Light mode (default) */
   --md-sys-color-primary: #6750a4;
   --md-sys-color-on-primary: #ffffff;
   --md-sys-color-primary-container: #eaddff;
@@ -19,6 +20,51 @@
   --md-sys-elevation-1: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
   --md-sys-elevation-2: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 2px 6px 2px rgba(0, 0, 0, 0.15);
   --md-sys-elevation-3: 0px 1px 3px 0px rgba(0, 0, 0, 0.3), 0px 4px 8px 3px rgba(0, 0, 0, 0.15);
+  
+  /* Reduced border radius - less rounded */
+  --border-radius-sm: 4px;
+  --border-radius-md: 6px;
+  --border-radius-lg: 8px;
+}
+
+/* Dark mode */
+[data-theme="dark"] {
+  --md-sys-color-primary: #d0bcff;
+  --md-sys-color-on-primary: #381e72;
+  --md-sys-color-primary-container: #4f378b;
+  --md-sys-color-on-primary-container: #eaddff;
+  --md-sys-color-secondary: #ccc2dc;
+  --md-sys-color-on-secondary: #332d41;
+  --md-sys-color-secondary-container: #4a4458;
+  --md-sys-color-on-secondary-container: #e8def8;
+  --md-sys-color-surface: #141218;
+  --md-sys-color-surface-variant: #49454f;
+  --md-sys-color-on-surface: #e6e1e5;
+  --md-sys-color-on-surface-variant: #cab6f0;
+  --md-sys-color-outline: #938f99;
+  --md-sys-color-outline-variant: #49454f;
+  --md-sys-elevation-1: 0px 1px 2px 0px rgba(0, 0, 0, 0.5), 0px 1px 3px 1px rgba(0, 0, 0, 0.25);
+  --md-sys-elevation-2: 0px 1px 2px 0px rgba(0, 0, 0, 0.5), 0px 2px 6px 2px rgba(0, 0, 0, 0.25);
+  --md-sys-elevation-3: 0px 1px 3px 0px rgba(0, 0, 0, 0.5), 0px 4px 8px 3px rgba(0, 0, 0, 0.25);
+}
+
+/* Dark mode - Fix dropdown menu colors */
+[data-theme="dark"] md-select-option {
+  background-color: var(--md-sys-color-surface-variant);
+  color: var(--md-sys-color-on-surface);
+}
+
+[data-theme="dark"] md-select-option:hover {
+  background-color: var(--md-sys-color-surface);
+}
+
+[data-theme="dark"] md-menu {
+  background-color: var(--md-sys-color-surface-variant);
+  --md-menu-container-color: var(--md-sys-color-surface-variant);
+}
+
+[data-theme="dark"] md-select-option [slot="headline"] {
+  color: var(--md-sys-color-on-surface);
 }
 
 * {
@@ -98,10 +144,10 @@ body {
 .app-bar-content {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 16px 24px;
+  padding: 8px 24px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 32px;
 }
 
 .brand {
@@ -123,56 +169,54 @@ body {
   letter-spacing: 0.0071428571em;
 }
 
-.nav-links {
+/* Nav Bar - all inline */
+.nav-bar {
   display: flex;
-  gap: 32px;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
 }
 
-.nav-links a {
+.nav-bar a {
   text-decoration: none;
   color: var(--md-sys-color-on-surface-variant);
   font-size: 0.875rem;
   font-weight: 500;
   line-height: 1.25rem;
   letter-spacing: 0.0071428571em;
-  padding: 8px 12px;
-  border-radius: 8px;
+  padding: 4px 10px;
+  border-radius: var(--border-radius-sm);
   transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
-.nav-links a:hover {
+.nav-bar a:hover {
   color: var(--md-sys-color-on-surface);
   background-color: var(--md-sys-color-surface-variant);
 }
 
-.nav-links a.active {
+.nav-bar a.active {
   color: var(--md-sys-color-primary);
   background-color: var(--md-sys-color-primary-container);
 }
 
-/* Filter Bar */
-.filter-bar {
-  background-color: var(--md-sys-color-surface-variant);
-  border-bottom: 1px solid var(--md-sys-color-outline-variant);
+.nav-separator {
+  color: var(--md-sys-color-outline);
+  margin: 0 8px;
+  font-size: 0.875rem;
 }
 
-.filter-bar-content {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 16px 24px;
-  display: flex;
-  gap: 16px;
-  align-items: center;
-  flex-wrap: wrap;
+.nav-spacer {
+  flex: 1;
 }
 
-.filter-bar md-outlined-select {
-  min-width: 180px;
-  --md-outlined-select-container-shape: 8px;
+.nav-bar md-outlined-select {
+  min-width: 120px;
+  --md-outlined-select-container-shape: var(--border-radius-sm);
 }
 
-.filter-bar md-filled-button {
-  margin-left: auto;
+.nav-bar md-icon-button {
+  --md-icon-button-icon-color: var(--md-sys-color-on-surface-variant);
 }
 
 /* Main Content */
@@ -259,7 +303,7 @@ body {
 .release-card {
   background-color: var(--md-sys-color-surface);
   border: 1px solid var(--md-sys-color-outline-variant);
-  border-radius: 12px;
+  border-radius: var(--border-radius-md);
   overflow: hidden;
   transition: all 0.2s ease;
 }
@@ -316,8 +360,8 @@ body {
 }
 
 .badge {
-  padding: 4px 10px;
-  border-radius: 6px;
+  padding: 3px 8px;
+  border-radius: var(--border-radius-sm);
   font-size: 0.75rem;
   font-weight: 500;
   line-height: 1rem;
@@ -442,8 +486,8 @@ body {
 
 /* Tag Badge Styles */
 .tag-badge {
-  padding: 4px 10px;
-  border-radius: 6px;
+  padding: 3px 8px;
+  border-radius: var(--border-radius-sm);
   font-size: 0.75rem;
   font-weight: 600;
   line-height: 1rem;
@@ -517,15 +561,15 @@ body {
 
 /* Material Web Components Customization */
 md-outlined-select {
-  --md-outlined-select-container-shape: 8px;
+  --md-outlined-select-container-shape: var(--border-radius-md);
 }
 
 md-filled-button {
-  --md-filled-button-container-shape: 8px;
+  --md-filled-button-container-shape: var(--border-radius-md);
 }
 
 md-outlined-button {
-  --md-outlined-button-container-shape: 8px;
+  --md-outlined-button-container-shape: var(--border-radius-md);
 }
 
 md-circular-progress {
@@ -533,17 +577,39 @@ md-circular-progress {
 }
 
 /* Responsive Design */
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
   .app-bar-content {
-    padding: 12px 16px;
+    flex-wrap: wrap;
+    gap: 8px;
   }
   
-  .nav-links {
+  .nav-bar {
+    flex-wrap: wrap;
+    width: 100%;
+  }
+}
+
+@media (max-width: 1024px) {
+  .app-bar-content {
+    padding: 8px 16px;
     gap: 16px;
   }
   
-  .filter-bar-content {
-    padding: 12px 16px;
+  .nav-bar {
+    gap: 4px;
+  }
+  
+  .nav-bar a {
+    padding: 4px 8px;
+    font-size: 0.8125rem;
+  }
+  
+  .nav-filters {
+    gap: 6px;
+  }
+  
+  .nav-filters md-outlined-select {
+    min-width: 110px;
   }
   
   .main-content {
@@ -570,27 +636,27 @@ md-circular-progress {
     display: none;
   }
   
-  .nav-links {
-    gap: 8px;
+  .nav-bar {
+    gap: 2px;
+    flex-wrap: wrap;
   }
   
-  .nav-links a {
-    padding: 6px 10px;
-    font-size: 0.8125rem;
+  .nav-bar a {
+    padding: 4px 6px;
+    font-size: 0.75rem;
   }
   
-  .filter-bar-content {
-    flex-direction: column;
-    align-items: stretch;
+  .nav-separator {
+    display: none;
   }
   
-  .filter-bar md-outlined-select {
-    width: 100%;
+  .nav-spacer {
+    display: none;
   }
   
-  .filter-bar md-filled-button {
-    margin-left: 0;
-    width: 100%;
+  .nav-bar md-outlined-select {
+    min-width: 100px;
+    flex: 1;
   }
   
   .legend-grid {

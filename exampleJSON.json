@@ -98,21 +98,21 @@
       ]
     },
     {
-      "id": "jibo-recommender",
-      "name": "Jibo Recommender",
+      "id": "jibo-recommander",
+      "name": "Jibo Recommander",
       "location": "US",
-      "type": "Recommender",
-      "baseUrl": "https://github.com/Jibo-Revival-Group/JiboRecommender",
+      "type": "Recommander",
+      "baseUrl": "https://github.com/Jibo-Revival-Group/JiboRecommander",
       "releases": [
         {
           "version": "1.0.0",
           "versionTag": "v1.0.0",
-          "name": "Jibo Recommender v1.0.0",
+          "name": "Jibo Recommander v1.0.0",
           "description": "AI-powered recommendation system for Jibo.\n\n## Features\n- Personalized suggestions\n- Context-aware responses\n- Learning algorithms\n\n#!JiboOSR:2345678|RC|NW|IP#",
           "releaseDate": "2024-03-01T12:00:00Z",
           "preRelease": false,
-          "downloadUrl": "https://github.com/Jibo-Revival-Group/JiboRecommender/releases/download/v1.0.0/jibo-recommender-1.0.0.zip",
-          "repoUrl": "https://github.com/Jibo-Revival-Group/JiboRecommender/releases/tag/v1.0.0",
+          "downloadUrl": "https://github.com/Jibo-Revival-Group/JiboRecommander/releases/download/v1.0.0/jibo-recommander-1.0.0.zip",
+          "repoUrl": "https://github.com/Jibo-Revival-Group/JiboRecommander/releases/tag/v1.0.0",
           "releaseId": "2345678",
           "tags": ["RC", "NW", "IP"],
           "fileSize": "89.3 MB",

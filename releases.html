@@ -26,64 +26,66 @@
           <img src="logo.svg" alt="Jibo Revival" class="brand-logo" />
           <span class="brand-text">Jibo Revival</span>
         </a>
-        
-        <nav class="nav-links">
+
+        <nav class="nav-bar">
           <a href="index.html">Home</a>
           <a href="files.html">Files</a>
           <a href="docs.html">Docs</a>
           <a href="releases.html" class="active">Releases</a>
+          
+          <span class="nav-separator">|</span>
+          
+          <md-outlined-select id="type-select" label="Type">
+            <md-select-option value="all">
+              <div slot="headline">All Types</div>
+            </md-select-option>
+            <md-select-option value="OpenJiboOS" selected>
+              <div slot="headline">OpenJiboOS</div>
+            </md-select-option>
+            <md-select-option value="Server">
+              <div slot="headline">Server</div>
+            </md-select-option>
+            <md-select-option value="Recommander">
+              <div slot="headline">Recommander</div>
+            </md-select-option>
+            <md-select-option value="Skills">
+              <div slot="headline">Skills</div>
+            </md-select-option>
+            <md-select-option value="Tools">
+              <div slot="headline">Tools</div>
+            </md-select-option>
+          </md-outlined-select>
+
+          <md-outlined-select id="version-select" label="Version">
+            <md-select-option value="all">
+              <div slot="headline">All Versions</div>
+            </md-select-option>
+          </md-outlined-select>
+
+          <md-outlined-select id="location-select" label="Location">
+            <md-select-option value="all">
+              <div slot="headline">All Locations</div>
+            </md-select-option>
+            <md-select-option value="US">
+              <div slot="headline">🇺🇸 US</div>
+            </md-select-option>
+            <md-select-option value="GR">
+              <div slot="headline">🇬🇷 GR</div>
+            </md-select-option>
+          </md-outlined-select>
+
+          <span class="nav-spacer"></span>
+
+          <md-icon-button id="refresh-btn" title="Refresh">
+            <md-icon>refresh</md-icon>
+          </md-icon-button>
+
+          <md-icon-button id="theme-toggle" title="Toggle Dark Mode">
+            <md-icon>dark_mode</md-icon>
+          </md-icon-button>
         </nav>
       </div>
     </header>
-
-    <!-- Filter Bar -->
-    <div class="filter-bar">
-      <div class="filter-bar-content">
-        <md-outlined-select id="type-select" label="Software Type">
-          <md-select-option value="all">
-            <div slot="headline">All Types</div>
-          </md-select-option>
-          <md-select-option value="OpenJiboOS" selected>
-            <div slot="headline">OpenJiboOS</div>
-          </md-select-option>
-          <md-select-option value="Server">
-            <div slot="headline">Server</div>
-          </md-select-option>
-          <md-select-option value="Recommender">
-            <div slot="headline">Recommender</div>
-          </md-select-option>
-          <md-select-option value="Skills">
-            <div slot="headline">Skills</div>
-          </md-select-option>
-          <md-select-option value="Tools">
-            <div slot="headline">Tools</div>
-          </md-select-option>
-        </md-outlined-select>
-
-        <md-outlined-select id="version-select" label="Version">
-          <md-select-option value="all">
-            <div slot="headline">All Versions</div>
-          </md-select-option>
-        </md-outlined-select>
-
-        <md-outlined-select id="location-select" label="Location">
-          <md-select-option value="all">
-            <div slot="headline">All Locations</div>
-          </md-select-option>
-          <md-select-option value="US">
-            <div slot="headline">🇺🇸 United States</div>
-          </md-select-option>
-          <md-select-option value="GR">
-            <div slot="headline">🇬🇷 Greece</div>
-          </md-select-option>
-        </md-outlined-select>
-
-        <md-filled-button id="refresh-btn">
-          <md-icon slot="icon">refresh</md-icon>
-          Refresh
-        </md-filled-button>
-      </div>
-    </div>
 
     <!-- Main Content -->
     <main class="main-content">
@@ -93,12 +95,6 @@
           Download official releases from verified mirror sources. 
           Each release includes version info, release tags, and authenticity verification.
         </p>
-      </div>
-
-      <!-- Loading State -->
-      <div class="loading-container" id="loading-container">
-        <md-circular-progress indeterminate></md-circular-progress>
-        <p class="md-typescale-body-medium">Loading releases...</p>
       </div>
 
       <!-- Error State -->
@@ -121,6 +117,12 @@
         <md-icon class="empty-icon">inbox</md-icon>
         <p class="md-typescale-body-large">No releases found</p>
         <p class="md-typescale-body-medium">Try adjusting your filters</p>
+      </div>
+
+      <!-- Loading State -->
+      <div class="loading-container" id="loading-container">
+        <md-circular-progress indeterminate></md-circular-progress>
+        <p class="md-typescale-body-medium">Loading releases...</p>
       </div>
     </main>
 

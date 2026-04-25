@@ -43,6 +43,23 @@ class ReleasesManager {
     const locationSelect = document.getElementById('location-select');
     const refreshBtn = document.getElementById('refresh-btn');
     const retryBtn = document.getElementById('retry-btn');
+    const themeToggle = document.getElementById('theme-toggle');
+
+    // Dark mode toggle
+    if (themeToggle) {
+      // Check for saved theme preference
+      const savedTheme = localStorage.getItem('theme') || 'light';
+      document.body.setAttribute('data-theme', savedTheme);
+      updateThemeIcon(savedTheme);
+
+      themeToggle.addEventListener('click', () => {
+        const currentTheme = document.body.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        document.body.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateThemeIcon(newTheme);
+      });
+    }
 
     if (typeSelect) {
       typeSelect.addEventListener('change', (e) => {
@@ -360,23 +377,33 @@ class ReleasesManager {
 }
 
 // Initialize when DOM is ready and Material components are loaded
-function initApp() {
-  // Check if Material components are loaded
-  const checkInterval = setInterval(() => {
-    if (customElements.get('md-outlined-select')) {
-      clearInterval(checkInterval);
-      console.log('Material components loaded, initializing app...');
-      new ReleasesManager();
+function updateThemeIcon(theme) {
+    const themeToggle = document.getElementById('theme-toggle');
+    if (themeToggle) {
+      const icon = themeToggle.querySelector('md-icon');
+      if (icon) {
+        icon.textContent = theme === 'dark' ? 'light_mode' : 'dark_mode';
+      }
     }
-  }, 100);
+  }
 
-  // Timeout after 10 seconds
-  setTimeout(() => {
-    clearInterval(checkInterval);
-    console.warn('Material components timeout, initializing anyway...');
-    new ReleasesManager();
-  }, 10000);
-}
+function initApp() {
+    // Check if Material components are loaded
+    const checkInterval = setInterval(() => {
+      if (customElements.get('md-outlined-select')) {
+        clearInterval(checkInterval);
+        console.log('Material components loaded, initializing app...');
+        new ReleasesManager();
+      }
+    }, 100);
+
+    // Timeout after 10 seconds
+    setTimeout(() => {
+      clearInterval(checkInterval);
+      console.warn('Material components timeout, initializing anyway...');
+      new ReleasesManager();
+    }, 10000);
+  }
 
 // Wait for everything to load
 if (document.readyState === 'loading') {
