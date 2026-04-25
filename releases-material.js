@@ -6,6 +6,28 @@ const CONFIG = {
   corsProxy: 'https://cors-anywhere.herokuapp.com/'
 };
 
+// Filter options - easy to add/modify
+const FILTER_OPTIONS = {
+  type: [
+    { value: 'all', label: 'All Types' },
+    { value: 'OpenJiboOS', label: 'OpenJiboOS', selected: true },
+    { value: 'Server', label: 'Server' },
+    { value: 'Recommander', label: 'Recommander' },
+    { value: 'Skills', label: 'Skills' },
+    { value: 'Tools', label: 'Tools' }
+    // Add more types here easily:
+    // { value: 'NewType', label: 'New Type' },
+  ],
+  location: [
+    { value: 'all', label: 'All Locations' },
+    { value: 'US', label: '🇺🇸 US' },
+    { value: 'GR', label: '🇬🇷 GR' },
+    { value: 'GH', label: 'Github' }
+    // Add more locations here:
+    // { value: 'DE', label: '🇩🇪 DE' },
+  ]
+};
+
 // Release type definitions
 const RELEASE_TYPES = {
   'NT': { label: 'Nightly', color: '#9333ea', description: 'Development build' },
@@ -32,8 +54,37 @@ class ReleasesManager {
   }
 
   async init() {
+    this.renderFilters();
     this.setupEventListeners();
     await this.loadReleases();
+  }
+
+  // Render filter options from FILTER_OPTIONS config
+  renderFilters() {
+    const typeSelect = document.getElementById('type-select');
+    const locationSelect = document.getElementById('location-select');
+
+    if (typeSelect && FILTER_OPTIONS.type) {
+      typeSelect.innerHTML = '';
+      FILTER_OPTIONS.type.forEach(option => {
+        const opt = document.createElement('md-select-option');
+        opt.value = option.value;
+        if (option.selected) opt.setAttribute('selected', '');
+        opt.innerHTML = `<div slot="headline">${option.label}</div>`;
+        typeSelect.appendChild(opt);
+      });
+    }
+
+    if (locationSelect && FILTER_OPTIONS.location) {
+      locationSelect.innerHTML = '';
+      FILTER_OPTIONS.location.forEach(option => {
+        const opt = document.createElement('md-select-option');
+        opt.value = option.value;
+        if (option.selected) opt.setAttribute('selected', '');
+        opt.innerHTML = `<div slot="headline">${option.label}</div>`;
+        locationSelect.appendChild(opt);
+      });
+    }
   }
 
   setupEventListeners() {
