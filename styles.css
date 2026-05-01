@@ -219,6 +219,7 @@ body[data-theme="aero"] .theme-menu__item {
 .hero h1,
 .section-heading h2,
 .resource-card h3,
+.tools-card h3,
 .feature-card h3,
 .timeline-card h3 {
   font-family: "Syne", sans-serif;
@@ -468,6 +469,7 @@ main { display: grid; gap: 18px; margin-top: 18px; }
 
 .feature-card,
 .resource-card,
+.tools-card,
 .timeline-card,
 .helper-card {
   border: 1px solid var(--line);
@@ -481,6 +483,7 @@ main { display: grid; gap: 18px; margin-top: 18px; }
 
 body[data-theme="aero"] .feature-card,
 body[data-theme="aero"] .resource-card,
+body[data-theme="aero"] .tools-card,
 body[data-theme="aero"] .timeline-card,
 body[data-theme="aero"] .helper-card {
   border-radius: 12px;
@@ -496,6 +499,11 @@ body[data-theme="aero"] .resource-card {
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(206, 226, 247, 0.86));
 }
 
+body[data-theme="aero"] .tools-card {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(206, 226, 247, 0.86));
+}
+
+
 body[data-theme="aero"] .timeline-card {
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.84), rgba(215, 233, 248, 0.72));
 }
@@ -506,6 +514,7 @@ body[data-theme="aero"] .helper-card {
 
 .feature-card__label,
 .resource-card__kicker,
+.tools-card__kicker,
 .timeline-card__meta {
   margin: 0 0 10px;
   color: var(--accent-deep);
@@ -517,12 +526,14 @@ body[data-theme="aero"] .helper-card {
 
 body[data-theme="aero"] .feature-card__label,
 body[data-theme="aero"] .resource-card__kicker,
+body[data-theme="aero"] .tools-card__kicker,
 body[data-theme="aero"] .timeline-card__meta {
   color: #0d56c0;
 }
 
 .feature-card h3,
 .resource-card h3,
+.tools-card h3,
 .timeline-card h3 {
   margin: 0 0 12px;
   font-size: 1.12rem;
@@ -532,6 +543,7 @@ body[data-theme="aero"] .timeline-card__meta {
 
 .feature-card p:last-child,
 .resource-card p:last-child,
+.tools-card p:last-child,
 .timeline-card p:last-child { margin-bottom: 0; }
 
 .timeline { display: grid; gap: 14px; }
@@ -566,12 +578,14 @@ body[data-theme="aero"] .chip {
 .timeline-card__authors { margin-top: 14px; color: var(--muted); font-size: 0.94rem; }
 
 .resource-grid,
+.tools-grid,
 .helpers-grid {
   display: grid;
   gap: 14px;
 }
 
 .resource-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.tools-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 
 .resource-card {
   display: block;
@@ -581,7 +595,16 @@ body[data-theme="aero"] .chip {
   transition: transform 150ms ease, border-color 150ms ease;
 }
 
+.tools-card {
+  display: block;
+  min-height: 100%;
+  padding: 18px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(240, 247, 255, 0.82));
+  transition: transform 150ms ease, border-color 150ms ease;
+}
+
 .resource-card:hover,
+.tools-card:hover,
 .helper-card:hover {
   transform: translateY(-2px);
   border-color: rgba(79, 135, 232, 0.32);
@@ -1080,6 +1103,7 @@ body[data-theme="aero"] .footer {
   .hero__content,
   .updates-grid,
   .resource-grid,
+  .tools-grid,
   .helpers-grid,
   .footer { grid-template-columns: 1fr; }
 
@@ -1087,6 +1111,7 @@ body[data-theme="aero"] .footer {
   .updates-grid { display: grid; }
 
   .resource-grid,
+  .tools-grid,
   .helpers-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
   .footer { display: grid; }
@@ -1102,6 +1127,7 @@ body[data-theme="aero"] .footer {
   .footer { padding: 14px; border-radius: 18px; }
   .hero h1 { max-width: none; font-size: clamp(1.9rem, 12vw, 3rem); }
   .resource-grid,
+  .tools-grid,
   .helpers-grid { grid-template-columns: 1fr; }
   .hero-card--image { min-height: 250px; }
 }
